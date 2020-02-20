@@ -8,9 +8,10 @@
     "test": "test"
   },
   "dependencies": {
-    "react-dom": "^16.12.0",
     "react": "^16.12.0",
-    "smart-table-core": "^3.0.7"
+    "react-dom": "^16.12.0",
+    "smart-table-core": "^3.0.7",
+    "use-debounce": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -25,7 +26,7 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development rollup -c rollup/dev.js -w & cpx ./src/theme.css ./dist -w",
-    "fixture": "(echo export default > src/fixture.js) && node ./scripts/fixture.js >> src/fixture.js"
+    "fixture": "(echo export default > src/services/fixture.js) && node ./scripts/fixture.js >> src/services/fixture.js"
   },
   "author": "",
   "license": "ISC"
