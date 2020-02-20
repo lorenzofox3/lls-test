@@ -22,7 +22,7 @@ export default () => {
         ]);
 
         //fake a server round trip
-        await wait(300);
+        await wait(500);
 
         return {
             data: partial,

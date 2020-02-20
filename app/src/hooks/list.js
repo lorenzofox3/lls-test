@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-export function useSmartList(st) {
+export function useSmartList({table: st}) {
     const [list, setList] = useState(st.getMatchingItems());
     useEffect(() => {
         const handler = items => {

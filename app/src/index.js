@@ -4,6 +4,7 @@ import smartListFactory from './services/smart-table.js';
 import SearchBox from './components/SearchBox.js';
 import StudentList from './components/StudentList.js';
 import Pagination from './components/Pagination.js';
+import LoadingIndicator from './components/LoadingIndicator.js';
 
 const table = smartListFactory();
 
@@ -26,9 +27,8 @@ const App = ({table}) => {
                 </button>
             </div>
         </div>
-        <Pagination smartTable={table}/>
         <StudentList smartTable={table}/>
-        {/*<Pagination smartTable={table}/>*/}
+        <Pagination smartTable={table}/>
     </div>;
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {usePagination} from '../hooks/pagination.js';
 import IconButton from './IconButton.js';
+import LoadingIndicator from './LoadingIndicator.js';
 
 const ChevronLeft = () => <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                viewBox="0 0 24 24">
@@ -17,12 +18,25 @@ const ChevronRight = () =>
 
 export default ({smartTable: table}) => {
     const [pageInfo, {previous, next}] = usePagination({table});
-    return <div>
-        <p>{pageInfo.page}</p>
-        <IconButton disabled={pageInfo.previousDisabled} onClick={previous} label="go on previous page">
+    const {page, size, previousDisabled, nextDisabled, count} = pageInfo;
+    const start = (page - 1) * size + 1;
+    const last = Math.min(page * size, count);
+    const className = ['pagination'];
+    if (!count) {
+        className.push('visually-hidden');
+    }
+    return <div hidden={count === 0} className={className}>
+        <IconButton disabled={previousDisabled} onClick={previous} label="go on previous page">
             <ChevronLeft/>
         </IconButton>
-        <IconButton disabled={pageInfo.nextDisabled} onClick={next} label="go on next page">
+        <div className="centered">
+            <LoadingIndicator smartTable={table}/>
+            <div>
+                Showing <strong>{start}</strong> - <strong>{last}</strong> out of <strong>{count}</strong> students
+            </div>
+            <LoadingIndicator smartTable={table}/>
+        </div>
+        <IconButton disabled={nextDisabled} onClick={next} label="go on next page">
             <ChevronRight/>
         </IconButton>
     </div>;
