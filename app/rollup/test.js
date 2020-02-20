@@ -6,9 +6,9 @@ import react from 'react';
 import reactDom from 'react-dom';
 
 export default {
-    input: './src/index.js',
+    input: './test/index.js',
     output: [{
-        file: './dist/dev.js',
+        file: './test/dist/debug.js',
         format: 'es',
         sourcemap:true
     }],
@@ -27,7 +27,7 @@ export default {
             }
         }),
         replace({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            'process.env.NODE_ENV': JSON.stringify('test')
         })
     ]
 };

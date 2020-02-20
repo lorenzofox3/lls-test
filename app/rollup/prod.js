@@ -4,13 +4,14 @@ import cjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import react from 'react';
 import reactDom from 'react-dom';
+import {terser} from 'rollup-plugin-terser';
 
 export default {
     input: './src/index.js',
     output: [{
-        file: './dist/dev.js',
+        file: '../public/app.js',
         format: 'es',
-        sourcemap:true
+        sourcemap: true
     }],
     plugins: [
         resolve(),
@@ -28,6 +29,7 @@ export default {
         }),
         replace({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
+        }),
+        terser()
     ]
 };
