@@ -24,7 +24,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: npm ci
+      - name: install, build and test
+        working-directory: ./app
+        run: |
+          npm ci
+          npm run build
 
 #      - run: npm run format
 #
