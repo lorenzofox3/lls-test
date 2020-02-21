@@ -8,7 +8,7 @@ import reactDom from 'react-dom';
 export default {
     input: './src/index.js',
     output: [{
-        file: './dist/dev.js',
+        file: './dist/app.js',
         format: 'es',
         sourcemap:true
     }],

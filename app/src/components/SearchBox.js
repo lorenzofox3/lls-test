@@ -1,5 +1,4 @@
-import React from 'react';
-import {useSearch} from '../hooks/search.js';
+import React, {useCallback} from 'react';
 import LoadingIndicator from './LoadingIndicator.js';
 
 const debounce = (fn, time = 300) => {
@@ -16,15 +15,18 @@ const debounce = (fn, time = 300) => {
 
 export default props => {
     const {scope, smartTable: table} = props;
-    const [predicate, search] = useSearch({scope, table});
-    // const callback = useCallback(debounce(v => search(v), 300));
+    const search = useCallback(debounce(value => table.search({
+        scope,
+        value,
+        flags:'i'
+    }), 300), [...scope]);
     return <label>
         <span>{props.children}</span>
         <div className="centered">
-        <input type="search" value={predicate} onChange={ev => {
-            search(ev.target.value);
-        }} placeholder="ex: john"/>
-        <LoadingIndicator smartTable={table} />
+            <input type="search" onChange={ev => {
+                search(ev.target.value);
+            }} placeholder="ex: john"/>
+            <LoadingIndicator smartTable={table}/>
         </div>
     </label>;
 };
