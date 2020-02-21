@@ -16,7 +16,7 @@ const AddIcon = () => <svg version="1.1" xmlns="http://www.w3.org/2000/svg" widt
 
 const App = ({table}) => {
     return <div>
-        <h1>High school students List</h1>
+        <h1>High school students List bla bla</h1>
         <div id="controls">
             <SearchBox scope={['firstname', 'lastname']} smartTable={table} id="search-input">Search for a
                 student</SearchBox>
