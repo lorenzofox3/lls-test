@@ -5,7 +5,7 @@ let count = 200;
 
 while (--count >= 0) {
     students.push({
-        id: faker.random.uuid(),
+        id: count,
         firstname: faker.name.firstName(),
         lastname: faker.name.lastName(),
         birthDate: faker.date.between(new Date(2010, 0), new Date(2000, 0)),

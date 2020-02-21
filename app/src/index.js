@@ -4,7 +4,8 @@ import smartListFactory from './services/smart-table.js';
 import SearchBox from './components/SearchBox.js';
 import StudentList from './components/StudentList.js';
 import Pagination from './components/Pagination.js';
-import LoadingIndicator from './components/LoadingIndicator.js';
+import IconButton from './components/IconButton.js';
+import {Modal} from './components/Modal.js';
 
 const table = smartListFactory();
 
@@ -18,17 +19,18 @@ const App = ({table}) => {
     return <div>
         <h1>High school students List</h1>
         <div id="controls">
-            <SearchBox scope={['firstname', 'lastname']} smartTable={table} id="search-input">Search for a
-                student</SearchBox>
+            <SearchBox scope={['firstname', 'lastname']} smartTable={table} id="search-input">
+                Search for a student
+            </SearchBox>
             <div className="controls-group">
-                <button className="success">
-                    <span className="visually-hidden">Add new student</span>
+                <IconButton onClick={() => table.openModal('ADD')} className="success" label="Add new student">
                     <AddIcon/>
-                </button>
+                </IconButton>
             </div>
         </div>
         <StudentList smartTable={table}/>
         <Pagination smartTable={table}/>
+        <Modal smartTable={table}/>
     </div>;
 };
 
