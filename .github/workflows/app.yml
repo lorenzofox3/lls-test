@@ -21,6 +21,6 @@ jobs:
         uses: Cecilapp/GitHub-Pages-deploy@master
         env:
           EMAIL: laurent34azerty@gmail.com
-          GH_TOKEN: ${{ secrets.GH }} # https://github.com/settings/tokens
-          BUILD_DIR: public/
+          GH_TOKEN: ${{ secrets.GH }}
+          BUILD_DIR: docs/
 
