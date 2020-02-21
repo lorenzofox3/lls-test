@@ -1,8 +1,23 @@
-body {
-    box-sizing: border-box;
-    color: #202020;
-    font-family: "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+:root {
     font-size: 18px;
+    --highligh-color: orangered;
+    --action-highlight-color: lightskyblue;
+    --light-gray: #757575;
+    --shadow-gray: #878787;
+    --danger-color: #cd382d;
+    --success-color: #3ea426;
+    --overlay-color: #353535;
+    --white: #fcfcfc;
+    --black: #080808;
+}
+
+body {
+    background: var(--white);
+    box-sizing: border-box;
+    color: var(--black);
+    font-family: "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+    margin: 0;
+    padding: 1em;
 }
 
 body * {
@@ -10,11 +25,11 @@ body * {
 }
 
 h1 {
-    border-bottom: 2px solid orangered;
+    border-bottom: 2px solid var(--highligh-color);
 }
 
 h2 {
-    color: orangered;
+    color: var(--highligh-color);
 }
 
 main {
@@ -22,34 +37,44 @@ main {
     margin: auto;
 }
 
-button {
+button, input[type=submit] {
+    background: inherit;
     border: 1px solid currentColor;
-    padding: 0.4em;
     border-radius: 4px;
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: lighter;
     outline: none;
+    padding: 0.25rem;
     transition: all 0.3s;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus,
+input[type=submit]:not(:disabled):hover,
+input[type=submit]:not(:disabled):focus {
     transform: scale(1.2);
-    box-shadow: 0 0 2px 0 #434343, 0 0 3px 0 #434343;
+    box-shadow: 0 0 2px 0 var(--shadow-gray), 0 0 3px 0 var(--shadow-gray);
+    border-color: var(--action-highlight-color);
 }
 
-input {
-    font-size: 0.95em;
+input, textarea {
+    background: inherit;
+    color: inherit;
+    font-size: 0.95rem;
     outline: none;
     padding: 0.2em;
     transition: all 0.3s;
-    border: 1px solid lightgrey;
+    border: 1px solid var(--light-gray);
 }
 
-label > span::after {
-    content: ':';
+::placeholder {
+    color: var(--light-gray);
 }
 
-input:focus {
-    border-color: lightskyblue;
-    box-shadow: 0 0 4px 0 #60a3fa, 0 0 6px 0 #60A3FA;
+input:focus, te xtarea:focus {
+    border-color: var(--action-highlight-color);
+    box-shadow: 0 0 4px 0 var(--action-highlight-color), 0 0 6px 0 var(--action-highlight-color);
 }
 
 button svg {
@@ -84,7 +109,7 @@ h2 {
 }
 
 .age {
-    color: #444444;
+    color: var(--light-gray);
     font-size: 0.9em;
     margin: 0.2em;
 }
@@ -95,23 +120,30 @@ h2 {
 }
 
 .controls-group > button {
-    --button-size: 2.2rem;
     display: inline-block;
-    height: var(--button-size);
-    width: var(--button-size);
     margin: 0 0.4em;
 }
 
+.icon {
+    --button-size: 2rem;
+    height: var(--button-size);
+    width: var(--button-size);
+}
+
 li {
-    margin: 0.8em 0;
+    margin: 1.5rem 0;
 }
 
 .student {
-    box-shadow: 2px 2px 4px 0 gray, 4px 4px 4px 0 lightgrey;
+    box-shadow: 0 0 2px 0 var(--shadow-gray), 0 0 4px 0 var(--shadow-gray);
     display: flex;
     flex-direction: row-reverse;
     max-width: 60rem;
-    padding: 0.5em 1em;
+    padding: 0.5rem 1rem;
+}
+
+.student-content {
+    flex-grow: 1;
 }
 
 .student > * {
@@ -119,7 +151,7 @@ li {
 }
 
 .avatar-container > div {
-    background: #ededed;
+    background: var(--light-gray);
     clip-path: circle(50%);
 }
 
@@ -130,28 +162,32 @@ li {
 }
 
 .danger {
-    --main-color: #cd382d;
-    background: var(--main-color);
+    background: var(--danger-color);
+    border-color: var(--danger-color);
     color: #e9e9e9;
-    border-color: var(--main-color);
 }
 
-.success {
-    --main-color: #3ea426;
-    background: var(--main-color);
+.success,
+input[type=submit] {
+    background: var(--success-color);
+    border-color: var(--success-color);
     color: #e9e9e9;
-    border-color: var(--main-color);
 }
 
 #controls {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    min-height: 4rem;
 }
 
 label {
     display: flex;
     flex-direction: column;
+}
+
+label > span::after {
+    content: ':';
 }
 
 label > * {
@@ -171,6 +207,43 @@ input[type=search]:focus {
     justify-content: space-around;
     align-items: center;
     margin: 1rem 0;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.loading {
+    margin: 0;
+    padding: 0 1rem;
+}
+
+#modal-overlay {
+    background: var(--overlay-color);
+    opacity: 0.95;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#modal-overlay > * {
+    background: var(--white);
+    box-shadow: 0 0 2px 0 var(--shadow-gray), 0 0 4px 0 var(--shadow-gray);
+    opacity: 1;
+    padding: 0.5em 1em;
+    min-width: 350px;
+}
+
+#modal-overlay[aria-hidden=true] {
+    display: none;
+}
+
+#modal-overlay .controls-group {
+    margin: 1rem;
+    text-align: right;
 }
 
 /**
@@ -227,11 +300,23 @@ spinner copied/pasted
     }
 }
 
-.invisible{
-    visibility: hidden;
+@media only screen and (orientation: portrait) {
+    .student {
+        flex-direction: column-reverse;
+        font-size: 22px;
+    }
 }
 
-.loading {
-    margin: 0;
-    padding: 0 1rem;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --highligh-color: #55c45d;
+        --action-highlight-color: #fa9d67;
+        --light-gray: #757575;
+        --shadow-gray: #416ca6;
+        --danger-color: #cd382d;
+        --success-color: #3ea426;
+        --overlay-color: #353535;
+        --white: #182129;
+        --black: #f2f2f2;
+    }
 }
