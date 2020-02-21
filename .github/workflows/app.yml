@@ -17,3 +17,10 @@ jobs:
         run: |
           npm install
           npm run build
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@master
+        env:
+          EMAIL: laurent34azerty@gmail.com
+          GH_TOKEN: ${{ secrets.GH }} # https://github.com/settings/tokens
+          BUILD_DIR: public/
+
