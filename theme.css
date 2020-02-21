@@ -1,0 +1,237 @@
+body {
+    box-sizing: border-box;
+    color: #202020;
+    font-family: "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+    font-size: 18px;
+}
+
+body * {
+    box-sizing: inherit;
+}
+
+h1 {
+    border-bottom: 2px solid orangered;
+}
+
+h2 {
+    color: orangered;
+}
+
+main {
+    max-width: 60rem;
+    margin: auto;
+}
+
+button {
+    border: 1px solid currentColor;
+    padding: 0.4em;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+button:hover, button:focus {
+    transform: scale(1.2);
+    box-shadow: 0 0 2px 0 #434343, 0 0 3px 0 #434343;
+}
+
+input {
+    font-size: 0.95em;
+    outline: none;
+    padding: 0.2em;
+    transition: all 0.3s;
+    border: 1px solid lightgrey;
+}
+
+label > span::after {
+    content: ':';
+}
+
+input:focus {
+    border-color: lightskyblue;
+    box-shadow: 0 0 4px 0 #60a3fa, 0 0 6px 0 #60A3FA;
+}
+
+button svg {
+    fill: currentColor;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+h2 {
+    margin: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.age {
+    color: #444444;
+    font-size: 0.9em;
+    margin: 0.2em;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls-group > button {
+    --button-size: 2.2rem;
+    display: inline-block;
+    height: var(--button-size);
+    width: var(--button-size);
+    margin: 0 0.4em;
+}
+
+li {
+    margin: 0.8em 0;
+}
+
+.student {
+    box-shadow: 2px 2px 4px 0 gray, 4px 4px 4px 0 lightgrey;
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 60rem;
+    padding: 0.5em 1em;
+}
+
+.student > * {
+    padding: 0.8em;
+}
+
+.avatar-container > div {
+    background: #ededed;
+    clip-path: circle(50%);
+}
+
+.avatar-container img {
+    display: inline-block;
+    height: 128px;
+    width: 128px;
+}
+
+.danger {
+    --main-color: #cd382d;
+    background: var(--main-color);
+    color: #e9e9e9;
+    border-color: var(--main-color);
+}
+
+.success {
+    --main-color: #3ea426;
+    background: var(--main-color);
+    color: #e9e9e9;
+    border-color: var(--main-color);
+}
+
+#controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+}
+
+label > * {
+    margin: 0.2em 0;
+}
+
+input[type=search] {
+    width: 220px;
+}
+
+input[type=search]:focus {
+    width: 300px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/**
+spinner copied/pasted
+ */
+
+.spinner {
+    --spinner-size: 5;
+    --line-color: orangered;
+    --line-alpha: 1;
+    --ring-color: #ff9e85;
+    --ring-alpha: .3;
+    --ring-size: 10;
+
+    font-size: calc(var(--spinner-size) * 1em);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.spinner .line {
+    fill: none;
+    stroke: var(--line-color);
+    stroke-width: var(--ring-size);
+    opacity: var(--line-alpha);
+    stroke-linecap: round;
+    transform-origin: 50% 50%;
+    transform: rotate3d(0, 0, 1, 0deg);
+    animation: 2156ms spinner-arc ease-in-out infinite,
+    1829ms spinner-rotate linear infinite;
+}
+
+.spinner .ring {
+    fill: none;
+    stroke: var(--ring-color);
+    stroke-width: var(--ring-size);
+    opacity: var(--ring-alpha);
+}
+
+@keyframes spinner-rotate {
+    to {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+@keyframes spinner-arc {
+    from {
+        stroke-dasharray: 0 150;
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dasharray: 100 150;
+        stroke-dashoffset: -140;
+    }
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+.loading {
+    margin: 0;
+    padding: 0 1rem;
+}
