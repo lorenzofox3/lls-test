@@ -18,14 +18,14 @@ jobs:
           npm install
           npm run build
       - name: Push changes to repo
-          run: |
-            REMOTE=https://${{ secrets.GH }}@github.com/${{ github.repository }}
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git config user.name "${{ github.actor }}"
-            git pull ${REMOTE}
-            git checkout master
-            git add .
-            git status
-            git commit -am "build pages"
-            git push ${REMOTE} master
+        run: |
+          REMOTE=https://${{ secrets.GH }}@github.com/${{ github.repository }}
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git pull ${REMOTE}
+          git checkout master
+          git add .
+          git status
+          git commit -am "build pages"
+          git push ${REMOTE} master
 
