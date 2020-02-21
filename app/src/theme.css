@@ -14,7 +14,7 @@
 body {
     background: var(--white);
     box-sizing: border-box;
-    color: #202020;
+    color: var(--black);
     font-family: "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
     margin: 0;
     padding: 1em;
@@ -41,6 +41,7 @@ button, input[type=submit] {
     background: inherit;
     border: 1px solid currentColor;
     border-radius: 4px;
+    color: var(--black);
     font-size: 1rem;
     font-weight: lighter;
     outline: none;
@@ -58,6 +59,8 @@ input[type=submit]:not(:disabled):focus {
 }
 
 input, textarea {
+    background: inherit;
+    color: inherit;
     font-size: 0.95rem;
     outline: none;
     padding: 0.2em;
@@ -65,8 +68,11 @@ input, textarea {
     border: 1px solid var(--light-gray);
 }
 
+::placeholder {
+    color: var(--light-gray);
+}
 
-input:focus, textarea:focus {
+input:focus, te xtarea:focus {
     border-color: var(--action-highlight-color);
     box-shadow: 0 0 4px 0 var(--action-highlight-color), 0 0 6px 0 var(--action-highlight-color);
 }
@@ -129,11 +135,11 @@ li {
 }
 
 .student {
-    box-shadow: 2px 2px 4px 0 var(--shadow-gray), 4px 4px 4px 0 var(--shadow-gray);
+    box-shadow: 0 0 2px 0 var(--shadow-gray), 0 0 4px 0 var(--shadow-gray);
     display: flex;
     flex-direction: row-reverse;
     max-width: 60rem;
-    padding: 0.5em 1em;
+    padding: 0.5rem 1rem;
 }
 
 .student-content {
@@ -172,6 +178,7 @@ input[type=submit] {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    min-height: 4rem;
 }
 
 label {
@@ -224,7 +231,7 @@ input[type=search]:focus {
 
 #modal-overlay > * {
     background: var(--white);
-    box-shadow: 2px 2px 4px 0 var(--black), 4px 4px 4px 0 var(--black);
+    box-shadow: 0 0 2px 0 var(--shadow-gray), 0 0 4px 0 var(--shadow-gray);
     opacity: 1;
     padding: 0.5em 1em;
     min-width: 350px;
@@ -290,5 +297,26 @@ spinner copied/pasted
     to {
         stroke-dasharray: 100 150;
         stroke-dashoffset: -140;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .student {
+        flex-direction: column-reverse;
+        font-size: 22px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --highligh-color: #55c45d;
+        --action-highlight-color: #fa9d67;
+        --light-gray: #757575;
+        --shadow-gray: #416ca6;
+        --danger-color: #cd382d;
+        --success-color: #3ea426;
+        --overlay-color: #353535;
+        --white: #182129;
+        --black: #f2f2f2;
     }
 }
