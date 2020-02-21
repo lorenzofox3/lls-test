@@ -28,7 +28,7 @@
     "zora": "^3.1.8"
   },
   "scripts": {
-    "build": "NODE_ENV=production rollup -c rollup/prod.js && cp ./src/theme.css ../docs",
+    "build": "NODE_ENV=production rollup -c rollup/prod.js && cp ./src/theme.css ../public",
     "dev": "NODE_ENV=development rollup -c rollup/dev.js -w & cpx ./src/theme.css ./dist -w",
     "test:build": "NODE_ENV=test rollup -c rollup/test.js",
     "test:watch": "npm run test:build -- -w",
