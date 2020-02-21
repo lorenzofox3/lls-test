@@ -9,7 +9,7 @@ import {terser} from 'rollup-plugin-terser';
 export default {
     input: './src/index.js',
     output: [{
-        file: '../public/app.js',
+        file: '../docs/app.js',
         format: 'es',
         sourcemap: true
     }],
