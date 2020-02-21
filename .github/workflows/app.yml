@@ -22,5 +22,5 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.GH }}
           BRANCH: master
-          FOLDER: /docs
+          FOLDER: docs
 
