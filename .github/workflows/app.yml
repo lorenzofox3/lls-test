@@ -12,15 +12,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install - build and test
+      - name: install, build and test
         working-directory: ./app
         run: |
           npm install
           npm run build
-      - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@master
-        env:
-          EMAIL: laurent34azerty@gmail.com
-          GH_TOKEN: ${{ secrets.GH }}
-          BUILD_DIR: docs/
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.GH }}
+          BRANCH: master
+          FOLDER: /docs
 
