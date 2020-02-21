@@ -8,6 +8,6 @@ export function useSmartList({table: st}) {
         };
         st.onDisplayChange(handler);
         return () => st.off('DISPLAY_CHANGED', handler);
-    }, [st.getTableState()]);
+    }, []);
     return list;
 }

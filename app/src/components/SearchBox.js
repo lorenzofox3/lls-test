@@ -18,7 +18,7 @@ export default props => {
     const search = useCallback(debounce(value => table.search({
         scope,
         value,
-        flags:'i'
+        flags: 'i'
     }), 300), [...scope]);
     return <label>
         <span>{props.children}</span>
